@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Shiny vs shiny.semantic - understanding the world of Bootstrap and FomanticUI</title>
+<style type="text/css">
+/**
+ * Prism.s theme ported from highlight.js's xcode style
+ */
+pre code {
+  padding: 1em;
+}
+.token.comment {
+  color: #007400;
+}
+.token.punctuation {
+  color: #999;
+}
+.token.tag,
+.token.selector {
+  color: #aa0d91;
+}
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+  color: #1c00cf;
+}
+.token.property,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin {
+  color: #c41a16;
+}
+.token.inserted {
+  background-color: #ccffd8;
+}
+.token.deleted {
+  background-color: #ffebe9;
+}
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #9a6e3a;
+}
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #836c28;
+}
+.token.function,
+.token.class-name {
+  color: #DD4A68;
+}
+.token.regex,
+.token.important,
+.token.variable {
+  color: #5c2699;
+}
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+</style>
+<style type="text/css">
+body {
+  font-family: sans-serif;
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+body, .footnotes, code { font-size: .9em; }
+li li { font-size: .95em; }
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+pre, img { max-width: 100%; }
+pre, pre:hover {
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+pre code {
+  display: block;
+  overflow-x: auto;
+}
+code { font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace; }
+:not(pre) > code, code[class] { background-color: #F8F8F8; }
+code.language-undefined, pre > code:not([class]) {
+  background-color: inherit;
+  border: 1px solid #eee;
+}
+table {
+  margin: auto;
+  border-top: 1px solid #666;
+}
+table thead th { border-bottom: 1px solid #ddd; }
+th, td { padding: 5px; }
+thead, tfoot, tr:nth-child(even) { background: #eee; }
+blockquote {
+  color: #666;
+  margin: 0;
+  padding-left: 1em;
+  border-left: 0.5em solid #eee;
+}
+hr, .footnotes::before { border: 1px dashed #ddd; }
+.frontmatter { text-align: center; }
+#TOC .numbered li { list-style: none; }
+#TOC .numbered { padding-left: 0; }
+#TOC .numbered ul { padding-left: 1em; }
+table, .body h2 { border-bottom: 1px solid #666; }
+.body .appendix, .appendix ~ h2 { border-bottom-style: dashed; }
+.footnote-ref a::before { content: "["; }
+.footnote-ref a::after { content: "]"; }
+.footnotes::before {
+  content: "";
+  display: block;
+  max-width: 20em;
+}
+
+@media print {
+  body {
+    font-size: 12pt;
+    max-width: 100%;
+  }
+  tr, img { page-break-inside: avoid; }
+}
+@media only screen and (min-width: 992px) {
+  pre { white-space: pre; }
+}
+</style>
+</head>
+<body>
+<div class="include-before">
+</div>
+<div class="frontmatter">
+<div class="title"><h1>Shiny vs shiny.semantic - understanding the world of Bootstrap and FomanticUI</h1></div>
+<div class="author"><h2>Appsilon</h2></div>
+<div class="date"><h3>2024-04-05</h3></div>
+</div>
+<div class="body">
+<p>In this tutorial we will walk you through the basics of <code>shiny.semantic</code>.</p>
+<h2 id="quick-q-amp-a">Quick Q&amp;A</h2>
+<p>First of all, let’s answer a few questions:</p>
+<ul>
+<li><strong>Why do I need <code>shiny.semantic</code>?</strong></li>
+</ul>
+<p>You can build your <code>Shiny</code> apps with standard shiny UI that relies on <a href="https://getbootstrap.com/">Bootstrap</a>.
+This means that <code>Shiny</code> attaches CSS and JS code that is responsible for its neat look.
+However, after a while you might notice that all apps made this way tend to look quite similar.
+<code>shiny.semantic</code> helps you to add a fresh look to your web application by providing an alternative
+UI framework that works under the hood.</p>
+<ul>
+<li><strong>What <code>shiny.semantic</code> has to do with Fomantic UI?</strong></li>
+</ul>
+<p>Similarly to <code>Shiny</code> attaching <em>Bootstrap</em> CSS and JS libraries, <code>shiny.semantic</code> relies on
+<a href="https://fomantic-ui.com/">Fomantic UI</a>. Historically, we built this package around <em>Semantic UI</em>
+library, but it got deprecated and now (since December 2019) we rely on the well-supported
+and maintained community fork called <a href="https://fomantic-ui.com/">Fomantic UI</a>.</p>
+<ul>
+<li><strong>Do I need to learn a new syntax to be able to use it?</strong></li>
+</ul>
+<p>Not at all! For your convenience, we created wrappers of the most popular functions
+that you know from <code>Shiny</code>. For example, you can create an action button using a
+snake case (which is a <code>shiny.semantic</code> standard): <code>action_button</code>, or
+you can use, more familiar from <code>Shiny</code>, camel case with consistent parameters: <code>actionButton</code>.</p>
+<p><strong>Note</strong>, however, that the philosophy behind the <em>Bootstrap</em> and <em>Fomantic</em> is quite
+different, so some behaviour might also differ. Usually <code>shiny.semantic</code> warns you or you
+can learn more about it from documentation of a specific function.</p>
+<ul>
+<li><strong>Can I use standard Shiny components with <code>shiny.semantic</code>?</strong></li>
+</ul>
+<p>It depends. In general, to be able to render <code>shiny.semantic</code> components correctly,
+your app <code>UI</code> code must be surrounded by <code>semanticPage</code> (equivalent of <code>fluidPage</code>)
+function that switches off standard Bootstrap dependencies. Thus some components from
+Shiny might look just bad, but don’t worry - most of them have <code>shiny.semantic</code> alternatives.
+Having said that, all of standard HTML elements from Shiny should work just fine
+(like <code>shiny::div</code> or <code>shiny::h2</code>).</p>
+<h2 id="how-to-use-shiny-semantic">How to use <code>shiny.semantic</code>?</h2>
+<p>You can use <code>shiny.semantic</code> in two ways:</p>
+<h3 id="a-using-fomantic-css-classes">(a) Using Fomantic CSS classes</h3>
+<p>If you know this and that about web development, you can create a number of components
+by extending standard <code>Shiny</code> objects with class definitions from <a href="https://fomantic-ui.com/">Fomantic UI</a>
+documentation. For example:</p>
+<pre><code class="language-r">div(class = &quot;ui raised segment&quot;,
+  div(
+    a(class=&quot;ui green ribbon label&quot;, &quot;Link&quot;),
+    p(&quot;Lorem ipsum, lorem ipsum, lorem ipsum&quot;),
+    actionButton(&quot;button&quot;, &quot;Click&quot;)
+  )
+)
+</code></pre>
+<div class="figure">
+<!--html_preserve--><div id="htmlwidget-5aaa2411d93aaa0107f6" style="width:400px;height:150px;" class="uirender html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5aaa2411d93aaa0107f6">{"x":{"ui":"<div class=\"ui raised segment\">\n  <div>\n    <a class=\"ui green ribbon label\">Link<\/a>\n    <p>Lorem ipsum, lorem ipsum, lorem ipsum<\/p>\n    <button id=\"button\" class=\"ui  button\">\n       \n      Click\n    <\/button>\n  <\/div>\n<\/div>"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<p class="caption">plot of chunk unnamed-chunk-2</p>
+</div>
+<h3 id="b-using-predefined-objects">(b) Using predefined objects</h3>
+<p>If you are not that comfortable with web development, you can take advantage of the
+number of elements that we implemented for you. See some examples below:</p>
+<pre><code class="language-r">range_input(&quot;range&quot;, 10, 15, 0, 20)
+text_input(&quot;txt&quot;, type = &quot;text&quot;, placeholder = &quot;Enter Text&quot;)
+date_input(&quot;date&quot;)
+</code></pre>
+<p>For more components visit our <a href="https://connect.appsilon.com/shiny-semantic-components/">Components live demo website</a>
+or the <code>examples/</code> folder on our <a href="https://github.com/Appsilon/shiny.semantic/">repository</a>.</p>
+<p>Little sneak-peak of what you can get is listed on the graphics below. Most of the components
+you may insert with just single line of code!</p>
+<img src="https://raw.githubusercontent.com/Appsilon/shiny.semantic/develop/man/figures/semantic_components.png" alt="compoents" width="500"/>
+<p>If you want to learn how to use a particular UI component, check its documentation. For example, you can call in RStudio (to see the docs for a counter button):</p>
+<pre><code class="language-r">?counter_button
+</code></pre>
+<p>or use our <a href="https://appsilon.github.io/shiny.semantic/">documentation website</a>.</p>
+<p>All examples come with easy to use code snippets that will help you get started.
+We hope that this short overview was useful. Good luck with building your first amazing
+app with <code>shiny.semantic</code> :)</p>
+</div>
+<div class="include-after">
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js" defer></script>
+</body>
+</html>

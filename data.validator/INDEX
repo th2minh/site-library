@@ -1,0 +1,14 @@
+add_results             Add validation results to the Report object
+data_validation_report
+                        Create new validator object
+get_results             Get validation results
+render_raw_report_ui    Render simple version of report
+render_semantic_report_ui
+                        Render semantic version of report
+save_report             Saving results as a HTML report
+save_results            Saving results table to external file
+save_summary            Save simple validation summary in text file
+validate                Prepare data for validation chain
+validate_cols           Validation on columns
+validate_if             Verify if expression regarding data is TRUE
+validate_rows           Validation on rows

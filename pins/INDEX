@@ -1,0 +1,38 @@
+board_azure             Use an Azure storage container as a board
+board_cache_path        Retrieve default cache path
+board_connect           Use Posit Connect as board
+board_connect_url       Use a vector of Posit Connect vanity URLs as a
+                        board
+board_folder            Use a local folder as board
+board_gcs               Use a Google Cloud Storage bucket as a board
+board_gdrive            Use a Google Drive folder as a board
+board_ms365             Use a OneDrive or Sharepoint document library
+                        as a board
+board_s3                Use an S3 bucket as a board
+board_url               Use a vector of URLs as a board
+cache_browse            Cache management
+legacy_azure            Azure board (legacy API)
+legacy_datatxt          Remote "data.txt" board (legacy API)
+legacy_dospace          DigitalOcean board (legacy API)
+legacy_gcloud           Google Cloud board (legacy API)
+legacy_github           GitHub board (legacy API)
+legacy_local            Local board (legacy API)
+legacy_s3               S3 board (legacy API)
+pin                     Pin a resource (legacy API)
+pin_browse              Browse source of a pin
+pin_delete              Delete a pin
+pin_download            Upload and download files to and from a board
+pin_exists              Determine if a pin exists
+pin_find                Search for pins (legacy API)
+pin_get                 Retrieve a pin (legacy API)
+pin_info                Retrieve pin metadata (legacy API)
+pin_list                List all pins
+pin_meta                Retrieve metadata for a pin
+pin_reactive            Reactive Pin (legacy API)
+pin_reactive_read       Wrap a pin in a reactive expression
+pin_read                Read and write objects to and from a board
+pin_remove              Delete a pin (legacy API)
+pin_search              Search for pins
+pin_versions            List, delete, and prune pin versions
+write_board_manifest    Write board manifest file to board's root
+                        directory

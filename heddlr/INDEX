@@ -1,0 +1,19 @@
+assemble_draft          Deprecated function for draft import
+bulk_replace            Bulk replace a pattern throughout multiple
+                        files.
+create_yaml_header      Convert list objects into R Markdown YAML
+                        headers
+export_template         Safely export templates to file.
+extract_draft           Extract multiple patterns into a single draft
+                        object
+extract_pattern         Extract patterns from larger documents
+heddle                  Transform pattern objects into template pieces
+import_draft            Import multiple patterns into a single draft
+                        object
+import_pattern          Quickly import plaintext files.
+make_template           Linearly combine template elements into
+                        templates
+provide_parameters      Easily provide parameters to R Markdown render
+                        calls
+use_parameters          Automatically include session objects as report
+                        parameters
